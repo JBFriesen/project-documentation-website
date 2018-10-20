@@ -60,7 +60,7 @@ class Project(models.Model):
     date_created = models.DateField()
     user_created = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     project_type = models.ForeignKey(ProjectType, on_delete=models.CASCADE)
-    status = models.CharField(max_lenght=50)          # tells if the project in pending,finished,etc
+    status = models.CharField(max_length=50)          # tells if the project in pending,finished,etc
     contrib_status = models.CharField(max_length=50)  # tells if and how the organization contributed to the project
     
     def __str__(self):
@@ -86,8 +86,8 @@ class Entry(models.Model):
 
 class UserInfo(models.Model):
     """Contains custom info for each user such as the user status, etc."""
-    user_object = models.OneToOneField(settings.AUTH_USER_MODEL)
-    status = models.CharField(max_length=50)
+    user_object = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    is_confirmed = models.BooleanField()
     
     def __str__(self):
         return self.user_object.name

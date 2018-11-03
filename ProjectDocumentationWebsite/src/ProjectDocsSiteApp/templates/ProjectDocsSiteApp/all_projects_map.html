@@ -1,0 +1,11 @@
+{% extends "ProjectDocsSiteApp/all_projects_base.html" %}
+
+{% block nav_bar %}
+  <a href="{% url 'ProjectDocsSiteApp:all_projects_index' %}">Projects</a>
+  <a href="{% url 'ProjectDocsSiteApp:all_projects_map' %}" class="active">Map</a>
+{% endblock %}
+
+{% block content %}
+  <p>The Map view.</p>
+  <p>Coming Soon!</p>
+{% endblock %}

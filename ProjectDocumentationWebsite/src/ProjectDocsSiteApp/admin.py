@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import ProjectType, Project, EntryType, Entry, UserInfo
+
+admin.site.register(ProjectType)
+admin.site.register(Project)
+admin.site.register(EntryType)
+admin.site.register(Entry)
+admin.site.register(UserInfo)

@@ -1,0 +1,18 @@
+{% extends "ProjectDocsSiteApp/all_projects_base.html" %}
+
+{% block nav_bar %}
+  <a href="{% url 'ProjectDocsSiteApp:all_projects_index' %}" class="active">Projects</a>
+  <a href="{% url 'ProjectDocsSiteApp:all_projects_map' %}">Map</a>
+{% endblock %}
+
+{% block content %}
+{% if project_list %}
+ <ul>
+    {% for project in project_list %}
+        <li><a href="{% url 'ProjectDocsSiteApp:project' project.id %}">{{ project.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No projects are available.</p>
+{% endif %}
+{% endblock %}

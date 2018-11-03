@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="{% static 'ProjectDocsSiteApp/all_projects_style.css' %}" />
+</head>
+
+<body>
+<h1>CSI Kenya Documentation</h1>
+
+<div class="topnav" id="myTopnav">
+  {% block nav_bar %}
+  <a href="{% url 'ProjectDocsSiteApp:all_projects_index' %}" class="active">Projects</a>
+  <a href="{% url 'ProjectDocsSiteApp:all_projects_map' %}">Map</a>
+  {% endblock %}
+</div>
+
+<div>
+{% block content %}
+<p>Comming Soon!</p>
+{% endblock %}
+</div>
+
+
+</body>
+</html>

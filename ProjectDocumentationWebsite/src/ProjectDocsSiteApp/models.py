@@ -36,7 +36,7 @@ class EntryType(models.Model):
     if it can have a update entry, and the templates for displaying each view."""
     type_code = models.CharField(max_length=5, primary_key=True)
     type_name = models.CharField(max_length=25, unique=True)
-    required_data_dict_string = models.TextField()
+    required_data_string = models.TextField()
     update_bool = models.BooleanField()
     preview_temp = models.CharField(max_length=50)
     view_temp = models.CharField(max_length=50)
@@ -48,9 +48,9 @@ class EntryType(models.Model):
     def __str__(self):
         return self.type_name
     
-    def required_data_dict_dict(self):
+    def required_data_dict(self):
         """Converts the required_data_dict_string field to a dict object and returns it."""
-        return string_to_dict(self.required_data_dict_string)
+        return string_to_dict(self.required_data_string)
   
 
 class Project(models.Model):
@@ -74,14 +74,14 @@ class Entry(models.Model):
     user_created = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     entry_type = models.ForeignKey(EntryType, on_delete=models.CASCADE)
     note = models.TextField()
-    data_list_string = models.TextField() # a csv list of key:value pairs eg. "key:value,key1:value1"
+    data_string = models.TextField() # a csv list of key:value pairs eg. "key:value,key1:value1"
     
     def __str__(self):
         return "%s-#%s" % (self.entry_type, self.id)
     
-    def data_list_dict(self):
+    def data_dict(self):
         """Converts the data_list_string field to a dict object and returns it."""
-        return string_to_dict(self.data_list_string)
+        return string_to_dict(self.data_string)
 
 
 class UserInfo(models.Model):
@@ -90,7 +90,7 @@ class UserInfo(models.Model):
     is_confirmed = models.BooleanField()
     
     def __str__(self):
-        return self.user_object.name
+        return self.user_object.username
     
  
     
